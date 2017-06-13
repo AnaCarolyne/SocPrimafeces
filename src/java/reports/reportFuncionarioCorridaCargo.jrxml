@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reportFuncionarioCorridaCargo" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="aaa4c293-bd3d-4671-8446-93d9cae8e66e">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     funcionarios.`idFuncionarios` AS funcionarios_idFuncionarios,
+     funcionarios.`nomeFuncionario` AS funcionarios_nomeFuncionario,
+     funcionarios.`nascimento` AS funcionarios_nascimento,
+     funcionarios.`cpf` AS funcionarios_cpf,
+     funcionarios.`rg` AS funcionarios_rg,
+     funcionarios.`sexo` AS funcionarios_sexo,
+     funcionarios.`telefone` AS funcionarios_telefone,
+     funcionarios.`celular` AS funcionarios_celular,
+     funcionarios.`login` AS funcionarios_login,
+     funcionarios.`senha` AS funcionarios_senha,
+     funcionarios.`logradouro` AS funcionarios_logradouro,
+     funcionarios.`bairro` AS funcionarios_bairro,
+     funcionarios.`cidade` AS funcionarios_cidade,
+     funcionarios.`uf` AS funcionarios_uf,
+     funcionarios.`Cargo_idCargo` AS funcionarios_Cargo_idCargo,
+     funcionarios.`Corrida_idCorrida` AS funcionarios_Corrida_idCorrida,
+     cargo.`idCargo` AS cargo_idCargo,
+     cargo.`nomeCargo` AS cargo_nomeCargo,
+     cargo.`descricao` AS cargo_descricao,
+     cargo.`permissoes` AS cargo_permissoes,
+     cargo.`salario` AS cargo_salario,
+     corrida.`idCorrida` AS corrida_idCorrida,
+     corrida.`nomeCorrida` AS corrida_nomeCorrida,
+     corrida.`data` AS corrida_data,
+     corrida.`horario` AS corrida_horario,
+     corrida.`maximoAtletas` AS corrida_maximoAtletas,
+     corrida.`estado` AS corrida_estado,
+     corrida.`Organizador_idOrganizador` AS corrida_Organizador_idOrganizador
+FROM
+     `cargo` cargo INNER JOIN `funcionarios` funcionarios ON cargo.`idCargo` = funcionarios.`Cargo_idCargo`
+     INNER JOIN `corrida` corrida ON funcionarios.`Corrida_idCorrida` = corrida.`idCorrida`]]>
+	</queryString>
+	<field name="funcionarios_nomeFuncionario" class="java.lang.String"/>
+	<field name="funcionarios_cpf" class="java.lang.String"/>
+	<field name="cargo_nomeCargo" class="java.lang.String"/>
+	<field name="cargo_salario" class="java.lang.String"/>
+	<field name="corrida_nomeCorrida" class="java.lang.String"/>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699" uuid="98836419-1eab-499c-990c-d748fddba893"/>
+				<staticText>
+					<reportElement x="20" y="20" width="515" height="43" forecolor="#FFFFFF" uuid="b5cffd90-77cc-43f3-9706-4234445f1862"/>
+					<textElement>
+						<font size="34" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Funcionário Cargo Corrida]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="342" y="72" width="233" height="20" forecolor="#FFFFFF" uuid="c398be7e-4679-4afe-b0e1-51adb9b55384"/>
+					<textElement textAlignment="Right">
+						<font size="14" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Sistema Organizador de Corrida]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="13"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="21">
+			<line>
+				<reportElement x="-20" y="20" width="595" height="1" forecolor="#666666" uuid="cbae9f04-7490-4fb9-b8fa-c1b3344ba2ea"/>
+			</line>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="111" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="9d97a186-8e90-43b9-91c0-3d51f6eb3ec6"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NomeFuncionario]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="111" y="0" width="111" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="6dee4d22-0940-41e8-8ebe-f67cb32c9941"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cpf]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="222" y="0" width="111" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="d51fd318-089a-4c93-8ff1-0833f763d87c"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NomeCargo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="333" y="0" width="111" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="ec65d106-3a45-4fc9-9e39-1d3d7ddad6f6"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SalarioCargo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="444" y="0" width="111" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="021dff28-63b0-4451-b49f-e7c2faefff09"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NomeCorrida]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="19" width="555" height="1" uuid="d841acec-271e-4569-a973-5a0ee83bdd25"/>
+			</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="0" y="0" width="111" height="20" uuid="ee44b1ec-4cda-423d-b193-97b4e99b46ea"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{funcionarios_nomeFuncionario}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="146" y="0" width="76" height="20" uuid="96ea229b-db2b-403e-8ba1-b55655ff5cda"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{funcionarios_cpf}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="254" y="0" width="79" height="20" uuid="bee83bd0-2971-487d-83aa-7d8a3b5c71e5"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cargo_nomeCargo}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="358" y="0" width="86" height="20" uuid="d34bbfc5-5cd6-4831-b80a-d622b520e0f6"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cargo_salario}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="468" y="0" width="87" height="20" uuid="e82397a8-6460-4423-a21f-2ca56de5208f"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{corrida_nomeCorrida}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="08d05b72-c3bc-4de8-84db-c32be0b57621"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="19b77066-2ca7-46ba-bf02-50ac79fa46c0"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="4" width="100" height="13" uuid="728e54d4-33f8-41bd-9ca3-ee0dd8eed056"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

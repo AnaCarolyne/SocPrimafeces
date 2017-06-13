@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reportModalidadeTipoProva" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9b153dfd-c4a1-42c4-a765-1183102399c0">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="TipoDeProva" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     modalidade.`idModalidade` AS modalidade_idModalidade,
+     modalidade.`sexo` AS modalidade_sexo,
+     modalidade.`percurso` AS modalidade_percurso,
+     modalidade.`horaLargada` AS modalidade_horaLargada,
+     modalidade.`tipoProva` AS modalidade_tipoProva,
+     modalidade.`quilometragem` AS modalidade_quilometragem
+FROM
+     `modalidade` modalidade
+where $P{TipoDeProva}=tipoProva]]>
+	</queryString>
+	<field name="modalidade_idModalidade" class="java.lang.Integer"/>
+	<field name="modalidade_sexo" class="java.lang.String"/>
+	<field name="modalidade_percurso" class="java.lang.String"/>
+	<field name="modalidade_horaLargada" class="java.lang.String"/>
+	<field name="modalidade_tipoProva" class="java.lang.String"/>
+	<field name="modalidade_quilometragem" class="java.lang.Integer"/>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699" uuid="3bb6233f-fc95-40e7-b4d3-e56e3c39ccd8"/>
+				<staticText>
+					<reportElement x="20" y="20" width="403" height="43" forecolor="#FFFFFF" uuid="925909ea-9681-4926-ad09-a87169d68ad4"/>
+					<textElement>
+						<font size="34" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Modalidade Tipo Prova]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="372" y="72" width="203" height="20" forecolor="#FFFFFF" uuid="4e2c004b-dd26-43de-af60-b946db7bbd36"/>
+					<textElement textAlignment="Right">
+						<font size="14" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Sistema Organizador de Corrida]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="13"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="21">
+			<line>
+				<reportElement x="-20" y="20" width="595" height="1" forecolor="#666666" uuid="a7ea4038-f529-422b-bef9-6155ea603682"/>
+			</line>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="138" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="3092623d-2d3e-4076-b86c-da9ebf755de2"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CodModalidade]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="138" y="0" width="138" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="1b5cc290-f2e4-4e3a-babb-d3e71fad25ad"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Percurso]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="276" y="0" width="138" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="66bbe68c-179a-4199-a3fc-1bb4f898867e"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[HoraLargada]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="414" y="0" width="138" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="70d4cd6b-de18-40ef-a01d-245b719ac125"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TipodeProva]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="19" width="555" height="1" uuid="d5ae690b-3aff-4e42-9bec-4c69b00808f7"/>
+			</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="31" y="0" width="107" height="20" uuid="342470a9-2971-4028-b11c-1e52b4852890"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{modalidade_idModalidade}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="193" y="0" width="83" height="20" uuid="9e7280e5-67a5-4615-96c3-1c4c1fc739ea"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{modalidade_percurso}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="324" y="0" width="90" height="20" uuid="9ee31f20-f28e-442c-ab58-9a8641092f91"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{modalidade_horaLargada}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="460" y="0" width="92" height="20" uuid="df072c38-65b7-470d-9157-d875943b04e5"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{modalidade_tipoProva}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="09b1f815-b649-4e62-b17d-a8a4ab125fad"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="daa426ae-0f0a-4417-867d-aebcb113f835"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="4" width="100" height="13" uuid="397bab51-419f-4688-97f0-50aed40ca545"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

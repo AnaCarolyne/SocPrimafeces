@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reportInscricaoPorModalidade" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="cd8383f8-4465-4342-a49d-011efa6ac9b7">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="IncricaoPorModalida" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     inscricao.`idInscricao` AS inscricao_idInscricao,
+     inscricao.`boleto` AS inscricao_boleto,
+     inscricao.`numeroDePeito` AS inscricao_numeroDePeito,
+     inscricao.`Corrida_idCorrida` AS inscricao_Corrida_idCorrida,
+     inscricao.`Modalidade_idModalidade` AS inscricao_Modalidade_idModalidade,
+     inscricao.`KitProva_idKitProva` AS inscricao_KitProva_idKitProva,
+     inscricao.`Lote_idLote` AS inscricao_Lote_idLote,
+     modalidade.`idModalidade` AS modalidade_idModalidade,
+     modalidade.`sexo` AS modalidade_sexo,
+     modalidade.`percurso` AS modalidade_percurso,
+     modalidade.`horaLargada` AS modalidade_horaLargada,
+     modalidade.`tipoProva` AS modalidade_tipoProva,
+     modalidade.`quilometragem` AS modalidade_quilometragem
+FROM
+     `modalidade` modalidade INNER JOIN `inscricao` inscricao ON modalidade.`idModalidade` = inscricao.`Modalidade_idModalidade`
+where $P{IncricaoPorModalida}=idModalidade]]>
+	</queryString>
+	<field name="inscricao_idInscricao" class="java.lang.Integer"/>
+	<field name="inscricao_boleto" class="java.lang.Integer"/>
+	<field name="inscricao_numeroDePeito" class="java.lang.String"/>
+	<field name="inscricao_Corrida_idCorrida" class="java.lang.Integer"/>
+	<field name="inscricao_Modalidade_idModalidade" class="java.lang.Integer"/>
+	<field name="inscricao_KitProva_idKitProva" class="java.lang.Integer"/>
+	<field name="inscricao_Lote_idLote" class="java.lang.Integer"/>
+	<field name="modalidade_idModalidade" class="java.lang.Integer"/>
+	<field name="modalidade_sexo" class="java.lang.String"/>
+	<field name="modalidade_percurso" class="java.lang.String"/>
+	<field name="modalidade_horaLargada" class="java.lang.String"/>
+	<field name="modalidade_tipoProva" class="java.lang.String"/>
+	<field name="modalidade_quilometragem" class="java.lang.Integer"/>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699" uuid="914e0f07-ef71-4b3f-af04-2dc1c447762f"/>
+				<staticText>
+					<reportElement x="20" y="20" width="414" height="43" forecolor="#FFFFFF" uuid="953249e9-66e8-4600-8c6c-b201ad0378cc"/>
+					<textElement>
+						<font size="34" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Inscrição Por Modalidade]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="348" y="72" width="227" height="20" forecolor="#FFFFFF" uuid="f83c31c4-0f75-4de0-a2a5-61cb8191f3b8"/>
+					<textElement textAlignment="Right">
+						<font size="14" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Sistema Organizador de Corrida]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="13"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="21">
+			<line>
+				<reportElement x="-20" y="20" width="595" height="1" forecolor="#666666" uuid="4b6f2912-f96d-481a-bfb8-d0ac9a414316"/>
+			</line>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="138" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="190f23ae-6d3e-4868-98cd-45f79c035cbc"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[N°Inscrição]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="138" y="0" width="138" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="2257381c-a17a-4c50-9a19-2b8fd4475c46"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sexo ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="276" y="0" width="138" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="146a1360-0c6e-4916-9026-369bc6232786"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Boleto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="414" y="0" width="138" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="c81ff924-4ef9-4ba0-9435-c86a208e1847"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CodModalidade]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="19" width="555" height="1" uuid="96a03911-f602-45fd-966c-5424914fad47"/>
+			</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="32" y="0" width="106" height="20" uuid="d9850a68-ec05-46bb-bba4-3c99805aa538"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{inscricao_numeroDePeito}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="168" y="0" width="108" height="20" uuid="4c13940f-13c3-4215-978e-1d44c651e866"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{modalidade_sexo}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="328" y="0" width="86" height="20" uuid="d46eb6ec-0774-4d29-b020-1e60c4da5e9b"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{inscricao_boleto}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="439" y="0" width="113" height="20" uuid="d112fd01-6b9e-4e70-b79e-3f9c7ad7f118"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{modalidade_idModalidade}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="90a323f5-e82c-425a-ae0c-b856c63568e4"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="3f54d0d2-2b8f-4139-9f58-d0a2d5c2e26f"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="4" width="100" height="13" uuid="0e90d9de-f618-485d-a0fd-f5196d866dca"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

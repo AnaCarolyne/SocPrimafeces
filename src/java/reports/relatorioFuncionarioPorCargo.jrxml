@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="relatorioFuncionarioPorCargo" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0a239044-62e9-48ed-a521-56b5f9cbd972">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="NomeCargo" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     funcionarios.`idFuncionarios` AS funcionarios_idFuncionarios,
+     funcionarios.`nomeFuncionario` AS funcionarios_nomeFuncionario,
+     funcionarios.`nascimento` AS funcionarios_nascimento,
+     funcionarios.`cpf` AS funcionarios_cpf,
+     funcionarios.`rg` AS funcionarios_rg,
+     funcionarios.`sexo` AS funcionarios_sexo,
+     funcionarios.`telefone` AS funcionarios_telefone,
+     funcionarios.`celular` AS funcionarios_celular,
+     funcionarios.`login` AS funcionarios_login,
+     funcionarios.`senha` AS funcionarios_senha,
+     funcionarios.`logradouro` AS funcionarios_logradouro,
+     funcionarios.`bairro` AS funcionarios_bairro,
+     funcionarios.`cidade` AS funcionarios_cidade,
+     funcionarios.`uf` AS funcionarios_uf,
+     funcionarios.`Cargo_idCargo` AS funcionarios_Cargo_idCargo,
+     funcionarios.`Corrida_idCorrida` AS funcionarios_Corrida_idCorrida,
+     cargo.`idCargo` AS cargo_idCargo,
+     cargo.`nomeCargo` AS cargo_nomeCargo,
+     cargo.`descricao` AS cargo_descricao,
+     cargo.`permissoes` AS cargo_permissoes,
+     cargo.`salario` AS cargo_salario
+FROM
+     `cargo` cargo INNER JOIN `funcionarios` funcionarios ON cargo.`idCargo` = funcionarios.`Cargo_idCargo`
+where $P{NomeCargo} = nomeCargo]]>
+	</queryString>
+	<field name="funcionarios_idFuncionarios" class="java.lang.Integer"/>
+	<field name="funcionarios_nomeFuncionario" class="java.lang.String"/>
+	<field name="funcionarios_nascimento" class="java.lang.String"/>
+	<field name="funcionarios_cpf" class="java.lang.String"/>
+	<field name="funcionarios_rg" class="java.lang.String"/>
+	<field name="funcionarios_sexo" class="java.lang.String"/>
+	<field name="funcionarios_telefone" class="java.lang.Integer"/>
+	<field name="funcionarios_celular" class="java.lang.Integer"/>
+	<field name="funcionarios_login" class="java.lang.String"/>
+	<field name="funcionarios_senha" class="java.lang.String"/>
+	<field name="funcionarios_logradouro" class="java.lang.String"/>
+	<field name="funcionarios_bairro" class="java.lang.String"/>
+	<field name="funcionarios_cidade" class="java.lang.String"/>
+	<field name="funcionarios_uf" class="java.lang.String"/>
+	<field name="funcionarios_Cargo_idCargo" class="java.lang.Integer"/>
+	<field name="funcionarios_Corrida_idCorrida" class="java.lang.Integer"/>
+	<field name="cargo_idCargo" class="java.lang.Integer"/>
+	<field name="cargo_nomeCargo" class="java.lang.String"/>
+	<field name="cargo_descricao" class="java.lang.String"/>
+	<field name="cargo_permissoes" class="java.lang.String"/>
+	<field name="cargo_salario" class="java.lang.String"/>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699" uuid="c928118f-7abd-4fdd-8ff0-a6e432b4fa1f"/>
+				<staticText>
+					<reportElement x="20" y="20" width="234" height="43" forecolor="#FFFFFF" uuid="a6f9b590-7365-43af-91af-e98ce00e7134"/>
+					<textElement>
+						<font size="34" isBold="true"/>
+					</textElement>
+					<text><![CDATA[TITLE]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="395" y="43" width="180" height="20" forecolor="#FFFFFF" uuid="03ec5e79-b2af-420d-ad9a-3a21e1d92b46"/>
+					<textElement textAlignment="Right">
+						<font size="14" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Add a description here]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="13"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="21">
+			<line>
+				<reportElement x="-20" y="20" width="595" height="1" forecolor="#666666" uuid="9230efb9-b5fb-41ab-a20a-b525990fa9f0"/>
+			</line>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="138" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="da15acfc-bbfd-4cbe-8569-8840118a8c34"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[funcionarios_nomeFuncionario]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="138" y="0" width="138" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="26306212-b591-42c2-a21d-d0729f549b97"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[funcionarios_cpf]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="276" y="0" width="138" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="a5d229ed-7aae-45f8-a701-3cad9a1fc205"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[funcionarios_telefone]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="414" y="0" width="138" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="7dc15c0d-9fe8-4057-af89-ceed924980cb"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[cargo_nomeCargo]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="19" width="555" height="1" uuid="a4a4952b-0ec6-48ae-9729-93797205f03d"/>
+			</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="0" y="0" width="138" height="20" uuid="e1354b13-fafd-4c0c-bd0c-9323dd39b21b"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{funcionarios_nomeFuncionario}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="138" y="0" width="138" height="20" uuid="02a2ddac-723b-4f2a-92a3-27ee223dddfc"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{funcionarios_cpf}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="276" y="0" width="138" height="20" uuid="0e333c5a-00d8-4a70-aa17-d40fc84c0ee9"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{funcionarios_telefone}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="414" y="0" width="138" height="20" uuid="0c5ad2a9-76ae-4e92-a9ed-7fecaa4f45c3"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cargo_nomeCargo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="c2011904-2fa4-429e-9725-396fac1f03a8"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="21d9e7fe-8d16-4152-a3d0-2d465ab18f63"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="4" width="100" height="13" uuid="71798843-d932-4a64-9847-7f2f8622b773"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

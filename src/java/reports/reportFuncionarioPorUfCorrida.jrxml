@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reportFuncionarioPorUfCorrida" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="fa08b65d-d084-43ad-85a3-f96bdc17f261">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="FuncionarioUfCorrida" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     funcionarios.`idFuncionarios` AS funcionarios_idFuncionarios,
+     funcionarios.`nomeFuncionario` AS funcionarios_nomeFuncionario,
+     funcionarios.`nascimento` AS funcionarios_nascimento,
+     funcionarios.`cpf` AS funcionarios_cpf,
+     funcionarios.`rg` AS funcionarios_rg,
+     funcionarios.`sexo` AS funcionarios_sexo,
+     funcionarios.`telefone` AS funcionarios_telefone,
+     funcionarios.`celular` AS funcionarios_celular,
+     funcionarios.`login` AS funcionarios_login,
+     funcionarios.`senha` AS funcionarios_senha,
+     funcionarios.`logradouro` AS funcionarios_logradouro,
+     funcionarios.`bairro` AS funcionarios_bairro,
+     funcionarios.`cidade` AS funcionarios_cidade,
+     funcionarios.`uf` AS funcionarios_uf,
+     funcionarios.`Cargo_idCargo` AS funcionarios_Cargo_idCargo,
+     funcionarios.`Corrida_idCorrida` AS funcionarios_Corrida_idCorrida,
+     corrida.`idCorrida` AS corrida_idCorrida,
+     corrida.`nomeCorrida` AS corrida_nomeCorrida,
+     corrida.`data` AS corrida_data,
+     corrida.`horario` AS corrida_horario,
+     corrida.`maximoAtletas` AS corrida_maximoAtletas,
+     corrida.`estado` AS corrida_estado,
+     corrida.`Organizador_idOrganizador` AS corrida_Organizador_idOrganizador
+FROM
+     `corrida` corrida INNER JOIN `funcionarios` funcionarios ON corrida.`idCorrida` = funcionarios.`Corrida_idCorrida`
+where $P{FuncionarioUfCorrida}=uf]]>
+	</queryString>
+	<field name="funcionarios_idFuncionarios" class="java.lang.Integer"/>
+	<field name="funcionarios_nomeFuncionario" class="java.lang.String"/>
+	<field name="funcionarios_nascimento" class="java.lang.String"/>
+	<field name="funcionarios_cpf" class="java.lang.String"/>
+	<field name="funcionarios_rg" class="java.lang.String"/>
+	<field name="funcionarios_sexo" class="java.lang.String"/>
+	<field name="funcionarios_telefone" class="java.lang.Integer"/>
+	<field name="funcionarios_celular" class="java.lang.Integer"/>
+	<field name="funcionarios_login" class="java.lang.String"/>
+	<field name="funcionarios_senha" class="java.lang.String"/>
+	<field name="funcionarios_logradouro" class="java.lang.String"/>
+	<field name="funcionarios_bairro" class="java.lang.String"/>
+	<field name="funcionarios_cidade" class="java.lang.String"/>
+	<field name="funcionarios_uf" class="java.lang.String"/>
+	<field name="funcionarios_Cargo_idCargo" class="java.lang.Integer"/>
+	<field name="funcionarios_Corrida_idCorrida" class="java.lang.Integer"/>
+	<field name="corrida_idCorrida" class="java.lang.Integer"/>
+	<field name="corrida_nomeCorrida" class="java.lang.String"/>
+	<field name="corrida_data" class="java.lang.String"/>
+	<field name="corrida_horario" class="java.lang.String"/>
+	<field name="corrida_maximoAtletas" class="java.lang.Integer"/>
+	<field name="corrida_estado" class="java.lang.String"/>
+	<field name="corrida_Organizador_idOrganizador" class="java.lang.Integer"/>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699" uuid="6334a883-6a6c-4c0b-9acb-4235447759f0"/>
+				<staticText>
+					<reportElement x="20" y="20" width="504" height="43" forecolor="#FFFFFF" uuid="1a533785-09db-45cd-9a1d-df9462deca46"/>
+					<textElement>
+						<font size="34" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Funcionario por Uf da Corrida]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="355" y="72" width="230" height="20" forecolor="#FFFFFF" uuid="849287af-8f0a-440a-89a8-1d6c32097f25"/>
+					<textElement textAlignment="Right">
+						<font size="14" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Sistema Organizador de Corrida]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="13"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="21">
+			<line>
+				<reportElement x="-20" y="20" width="595" height="1" forecolor="#666666" uuid="b3bf0dd5-101a-4714-abb1-4569bd71af17"/>
+			</line>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="111" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="08ac49a1-5687-46db-b52a-27c4ef8318e9"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NomeFuncionario]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="111" y="0" width="111" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="d9170ba3-a65f-4f02-8ff1-fdd52f919b4b"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nascimento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="222" y="0" width="111" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="30ab9204-3ce9-4a96-aefd-640a0cd96f01"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cpf]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="333" y="0" width="111" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="4e43109a-ce0b-4f2c-8591-8c0d5bc4d017"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Telefone]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="444" y="0" width="111" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="1e4a2ffc-47a4-47d7-8940-6536b71fe2e6"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[UFCorrida]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="19" width="555" height="1" uuid="88787818-36df-4fe0-be9e-eba3b60059fb"/>
+			</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="0" y="0" width="111" height="20" uuid="48d44d6e-ad4a-4904-ba1c-4c2806e2f6c2"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{funcionarios_nomeFuncionario}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="150" y="0" width="72" height="20" uuid="d7a4072b-47c2-4c41-8904-8ac713810a90"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{funcionarios_nascimento}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="280" y="0" width="53" height="20" uuid="901f1bff-5f5f-4baa-a21d-3778794d11be"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{funcionarios_cpf}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="373" y="0" width="71" height="20" uuid="55b4a8f2-8618-48aa-8079-fbf1d23b2aa9"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{funcionarios_telefone}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="482" y="0" width="73" height="20" uuid="9f3b0a58-cbd3-4de1-b899-9a39d8c503bf"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{corrida_estado}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="2440d68a-05af-4334-8e5a-997e7de732ca"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="4998c377-3a52-44f8-8fda-fe2c752b19a0"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="4" width="100" height="13" uuid="cf8b3c67-5d2d-47d9-a058-996e1efb84f0"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

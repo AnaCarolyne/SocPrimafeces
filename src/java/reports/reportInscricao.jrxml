@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reportInscricao" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8b1b32c0-3190-49bd-ba0d-30790f3f0798">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     inscricao.`idInscricao` AS inscricao_idInscricao,
+     inscricao.`numeroDePeito` AS inscricao_numeroDePeito,
+     inscricao.`Corrida_idCorrida` AS inscricao_Corrida_idCorrida,
+     inscricao.`Modalidade_idModalidade` AS inscricao_Modalidade_idModalidade,
+     inscricao.`KitProva_idKitProva` AS inscricao_KitProva_idKitProva,
+     inscricao.`Lote_idLote` AS inscricao_Lote_idLote
+FROM
+     `inscricao` inscricao]]>
+	</queryString>
+	<field name="inscricao_idInscricao" class="java.lang.Integer"/>
+	<field name="inscricao_numeroDePeito" class="java.lang.String"/>
+	<field name="inscricao_Corrida_idCorrida" class="java.lang.Integer"/>
+	<field name="inscricao_Modalidade_idModalidade" class="java.lang.Integer"/>
+	<field name="inscricao_KitProva_idKitProva" class="java.lang.Integer"/>
+	<field name="inscricao_Lote_idLote" class="java.lang.Integer"/>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699" uuid="2c28bcd6-3fc9-4b7b-8aef-9d05ec1a9d8b"/>
+				<staticText>
+					<reportElement x="211" y="20" width="234" height="43" forecolor="#FFFFFF" uuid="39e848e8-9978-4378-aedc-6a4398596144"/>
+					<textElement>
+						<font size="34" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Inscrição]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="412" y="72" width="180" height="20" forecolor="#FFFFFF" uuid="c4dd9ceb-0aab-4737-86de-d4b7bd1609a8"/>
+					<textElement textAlignment="Right">
+						<font size="14" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Relatório de Inscrição ]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="18"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="21">
+			<line>
+				<reportElement x="-20" y="20" width="595" height="1" forecolor="#666666" uuid="58da0555-8cf5-4086-8a48-d9cdcb0c5a58"/>
+			</line>
+			<staticText>
+				<reportElement mode="Opaque" x="-20" y="0" width="120" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="5b84740d-9df2-4151-af71-42d223eb4412"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cod Inscrição]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="100" y="0" width="84" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="7926f100-8463-4738-8ceb-f69085a4377c"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[N° de Peito]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="184" y="0" width="89" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="d4bc42cd-7ab9-49b7-a5b4-f975df70694e"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CodCorrida]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="273" y="0" width="119" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="413279a5-03f4-47d6-8a0d-0824f03a071c"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CodModalidade]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="392" y="0" width="103" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="c8144ae9-51f2-4349-abc3-9030b915df53"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cod KitProva]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="495" y="0" width="80" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="c14136d1-c311-4794-b9ee-b76c55ddede6"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CodLote]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="-20" y="20" width="595" height="1" uuid="3a32ffdc-648d-41ab-a83c-706a00a0ab11"/>
+			</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="26" y="0" width="42" height="20" uuid="60bb7b4d-c947-4e89-b80a-ad7c50b8d86c"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{inscricao_idInscricao}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="118" y="0" width="36" height="20" uuid="742e1bcb-5409-42a4-82be-a92f706ef921"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{inscricao_numeroDePeito}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="219" y="0" width="33" height="20" uuid="3d73c3b7-72f0-456c-a91b-d2922a4d3b2c"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{inscricao_Corrida_idCorrida}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="320" y="0" width="48" height="20" uuid="624cdd00-936b-4b22-8823-873f9274d7ba"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{inscricao_Modalidade_idModalidade}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="425" y="0" width="35" height="20" uuid="0ccd039b-deef-4598-a24c-874d833bc2be"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{inscricao_KitProva_idKitProva}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="515" y="0" width="37" height="20" uuid="d26c0227-8936-4225-9c99-928cbd1e8e58"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{inscricao_Lote_idLote}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="2e9f1021-8192-4745-9ffa-b2e2a2b34f54"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="32a13486-3ffc-4777-8312-4d6c7f488967"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="4" width="100" height="13" uuid="04657844-2f49-43f1-a3bb-dac32f9e4b25"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

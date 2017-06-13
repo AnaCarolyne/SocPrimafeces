@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reportAlimentoSuprimento" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b2bc7127-8cc7-4f6e-9825-7ef42095af5f">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="CodSuprimento" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     suprimento.`idSuprimento` AS suprimento_idSuprimento,
+     suprimento.`nomeSuprimento` AS suprimento_nomeSuprimento,
+     suprimento.`descricao` AS suprimento_descricao,
+     suprimento.`quantidade` AS suprimento_quantidade,
+     suprimento.`marca` AS suprimento_marca,
+     suprimento.`corrida_idCorrida` AS suprimento_corrida_idCorrida,
+     alimento.`idAlimento` AS alimento_idAlimento,
+     alimento.`nomeAlimento` AS alimento_nomeAlimento,
+     alimento.`calorias` AS alimento_calorias,
+     alimento.`qtdcarboidrato` AS alimento_qtdcarboidrato,
+     alimento.`porcao` AS alimento_porcao,
+     alimento.`suprimento_idSuprimento` AS alimento_suprimento_idSuprimento
+FROM
+     `suprimento` suprimento INNER JOIN `alimento` alimento ON suprimento.`idSuprimento` = alimento.`suprimento_idSuprimento`
+where $P{CodSuprimento} = idSuprimento]]>
+	</queryString>
+	<field name="suprimento_idSuprimento" class="java.lang.Integer"/>
+	<field name="suprimento_nomeSuprimento" class="java.lang.String"/>
+	<field name="suprimento_descricao" class="java.lang.String"/>
+	<field name="suprimento_quantidade" class="java.lang.Integer"/>
+	<field name="suprimento_marca" class="java.lang.String"/>
+	<field name="suprimento_corrida_idCorrida" class="java.lang.Integer"/>
+	<field name="alimento_idAlimento" class="java.lang.Integer"/>
+	<field name="alimento_nomeAlimento" class="java.lang.String"/>
+	<field name="alimento_calorias" class="java.lang.Integer"/>
+	<field name="alimento_qtdcarboidrato" class="java.lang.Integer"/>
+	<field name="alimento_porcao" class="java.lang.Integer"/>
+	<field name="alimento_suprimento_idSuprimento" class="java.lang.Integer"/>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699" uuid="830cc769-cf1f-4c91-9021-37ef6aee7dcf"/>
+				<staticText>
+					<reportElement x="20" y="20" width="446" height="43" forecolor="#FFFFFF" uuid="f7ee5712-f1e1-4f7d-9c8f-e4fe14299de1"/>
+					<textElement>
+						<font size="34" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Alimento Por Suprimento]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="355" y="72" width="220" height="20" forecolor="#FFFFFF" uuid="3ce1d28d-b79f-4566-b9a0-cf6191442c95"/>
+					<textElement textAlignment="Right">
+						<font size="14" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Sistema Organizador de Corrida]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="13"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="21">
+			<line>
+				<reportElement x="-20" y="20" width="595" height="1" forecolor="#666666" uuid="a001366f-898f-4c3f-b81f-97ee3e0ca57c"/>
+			</line>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="138" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="3e7d148e-b27f-438b-92d8-25b582f27dad"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NomeSuprimento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="138" y="0" width="138" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="5ee83e46-6687-4182-9583-a3ec4f608111"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CodSuprimento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="276" y="0" width="138" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="c6aeea1e-0fe6-4355-aabc-ec8e9f857c25"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NomeAlimento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="414" y="0" width="138" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="640216d1-09b5-4b37-a469-7b11b931a1b8"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Qtd Carboitrado]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="19" width="555" height="1" uuid="867c6577-6678-4f19-b4dc-f88945faf412"/>
+			</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="41" y="0" width="97" height="20" uuid="67a98a5f-9be4-440c-b7df-46509dcdb4bc"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{suprimento_nomeSuprimento}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="171" y="0" width="105" height="20" uuid="b18dac3c-9557-4b29-80be-c232c5b502a7"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{suprimento_idSuprimento}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="335" y="0" width="79" height="20" uuid="6648d265-76c3-456e-94c1-d430f4de8e80"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{alimento_nomeAlimento}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="446" y="0" width="106" height="20" uuid="81a766f4-a598-4798-ad40-08a495543676"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{alimento_qtdcarboidrato}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="07045ff2-f3fd-40f1-a699-db99b951656a"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="ae29e2d8-74d1-404c-9610-abd756a9f8a6"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="4" width="100" height="13" uuid="c2aabda1-49f2-4edf-a809-9d2e21f9ccf4"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

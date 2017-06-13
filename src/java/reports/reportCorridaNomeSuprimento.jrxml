@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reportCorridaNomeSuprimento" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="74fb63c3-6118-4273-9cdc-6e366b40521b">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="NomeDoSuprimento" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     corrida.`idCorrida` AS corrida_idCorrida,
+     corrida.`nomeCorrida` AS corrida_nomeCorrida,
+     corrida.`data` AS corrida_data,
+     corrida.`horario` AS corrida_horario,
+     corrida.`maximoAtletas` AS corrida_maximoAtletas,
+     corrida.`estado` AS corrida_estado,
+     corrida.`Organizador_idOrganizador` AS corrida_Organizador_idOrganizador,
+     suprimento.`idSuprimento` AS suprimento_idSuprimento,
+     suprimento.`nomeSuprimento` AS suprimento_nomeSuprimento,
+     suprimento.`descricao` AS suprimento_descricao,
+     suprimento.`quantidade` AS suprimento_quantidade,
+     suprimento.`marca` AS suprimento_marca,
+     suprimento.`corrida_idCorrida` AS suprimento_corrida_idCorrida
+FROM
+     `corrida` corrida INNER JOIN `suprimento` suprimento ON corrida.`idCorrida` = suprimento.`corrida_idCorrida`
+where $P{NomeDoSuprimento} = nomeSuprimento]]>
+	</queryString>
+	<field name="corrida_idCorrida" class="java.lang.Integer"/>
+	<field name="corrida_nomeCorrida" class="java.lang.String"/>
+	<field name="corrida_data" class="java.lang.String"/>
+	<field name="corrida_horario" class="java.lang.String"/>
+	<field name="corrida_maximoAtletas" class="java.lang.Integer"/>
+	<field name="corrida_estado" class="java.lang.String"/>
+	<field name="corrida_Organizador_idOrganizador" class="java.lang.Integer"/>
+	<field name="suprimento_idSuprimento" class="java.lang.Integer"/>
+	<field name="suprimento_nomeSuprimento" class="java.lang.String"/>
+	<field name="suprimento_descricao" class="java.lang.String"/>
+	<field name="suprimento_quantidade" class="java.lang.Integer"/>
+	<field name="suprimento_marca" class="java.lang.String"/>
+	<field name="suprimento_corrida_idCorrida" class="java.lang.Integer"/>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699" uuid="dd360b43-9881-41a9-ac37-8ae859cc2f4a"/>
+				<staticText>
+					<reportElement x="20" y="20" width="413" height="43" forecolor="#FFFFFF" uuid="12099a5c-c0e0-47f3-af1b-72f1be4335a7"/>
+					<textElement>
+						<font size="34" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Suprimento Nome]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="336" y="63" width="239" height="20" forecolor="#FFFFFF" uuid="0924216a-d8ae-473d-bada-aea1862ef417"/>
+					<textElement textAlignment="Right">
+						<font size="14" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Sistema Organizador de Corrida]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="13"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="21">
+			<line>
+				<reportElement x="-20" y="20" width="595" height="1" forecolor="#666666" uuid="9d751a7d-09a4-400e-9c6b-13a1f5c25bbf"/>
+			</line>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="111" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="71c985da-f646-455f-bc75-45a68563ad1f"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NomeCorrida]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="111" y="0" width="111" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="a0df8e22-0b39-40c8-a347-18712f828db8"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DataCorrida]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="222" y="0" width="111" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="79b3967c-f8c7-4342-a103-9ba434e8af82"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[HorarioCorrida]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="333" y="0" width="111" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="9694e514-228d-47a4-bbb3-77635208ad00"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MaxAtletas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="433" y="0" width="122" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="9a641136-10a6-41dc-998a-1c0b328bbe61"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NomeSuprimento]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="19" width="555" height="1" uuid="5890eba1-4380-47fd-a865-91bd18b5c0c0"/>
+			</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="24" y="0" width="87" height="20" uuid="cb0a8d52-c794-4809-8440-a5f8aa32d826"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{corrida_nomeCorrida}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="136" y="0" width="86" height="20" uuid="1cfd93ad-3c3c-461c-aee8-e582f267a4c3"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{corrida_data}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="255" y="0" width="78" height="20" uuid="2affea6b-c2eb-464e-bea8-928a9795e850"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{corrida_horario}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="366" y="0" width="78" height="20" uuid="4cd91d93-82c9-4780-9a22-6427dee86df0"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{corrida_maximoAtletas}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="472" y="0" width="83" height="20" uuid="dc76e2af-8d81-4245-8387-66c57220ef5e"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{suprimento_nomeSuprimento}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="0bdbe0db-cad4-4c06-b6ab-820d99ccec54"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="05fda93e-4699-4524-b822-c75de9819411"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="4" width="100" height="13" uuid="6c39e4ac-f6fc-42f7-8470-30fec7663cf3"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

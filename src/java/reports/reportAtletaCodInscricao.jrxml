@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reportAtletaCodInscricao" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7c66d6c5-e822-4fa3-9c77-52224d077db4">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="AtletaComCodInscricao" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     atleta.`idAtleta` AS atleta_idAtleta,
+     atleta.`nomeAtleta` AS atleta_nomeAtleta,
+     atleta.`dataNascimento` AS atleta_dataNascimento,
+     atleta.`logradouro` AS atleta_logradouro,
+     atleta.`numero` AS atleta_numero,
+     atleta.`complemento` AS atleta_complemento,
+     atleta.`bairro` AS atleta_bairro,
+     atleta.`cidade` AS atleta_cidade,
+     atleta.`estado` AS atleta_estado,
+     atleta.`cpf` AS atleta_cpf,
+     atleta.`rg` AS atleta_rg,
+     atleta.`sexo` AS atleta_sexo,
+     atleta.`telefone` AS atleta_telefone,
+     atleta.`celular` AS atleta_celular,
+     atleta.`portDeficiencia` AS atleta_portDeficiencia,
+     atleta.`contEmergencia` AS atleta_contEmergencia,
+     atleta.`login` AS atleta_login,
+     atleta.`senha` AS atleta_senha,
+     atleta.`email` AS atleta_email,
+     atleta.`cep` AS atleta_cep,
+     atleta.`tipoSanguineo` AS atleta_tipoSanguineo,
+     atleta.`Inscricao_idInscricao` AS atleta_Inscricao_idInscricao,
+     inscricao.`idInscricao` AS inscricao_idInscricao,
+     inscricao.`boleto` AS inscricao_boleto,
+     inscricao.`numeroDePeito` AS inscricao_numeroDePeito,
+     inscricao.`Corrida_idCorrida` AS inscricao_Corrida_idCorrida,
+     inscricao.`Modalidade_idModalidade` AS inscricao_Modalidade_idModalidade,
+     inscricao.`KitProva_idKitProva` AS inscricao_KitProva_idKitProva,
+     inscricao.`Lote_idLote` AS inscricao_Lote_idLote
+FROM
+     `inscricao` inscricao INNER JOIN `atleta` atleta ON inscricao.`idInscricao` = atleta.`Inscricao_idInscricao`
+where $P{AtletaComCodInscricao}=idInscricao]]>
+	</queryString>
+	<field name="atleta_idAtleta" class="java.lang.Integer"/>
+	<field name="atleta_nomeAtleta" class="java.lang.String"/>
+	<field name="atleta_dataNascimento" class="java.lang.String"/>
+	<field name="atleta_logradouro" class="java.lang.String"/>
+	<field name="atleta_numero" class="java.lang.Integer"/>
+	<field name="atleta_complemento" class="java.lang.String"/>
+	<field name="atleta_bairro" class="java.lang.String"/>
+	<field name="atleta_cidade" class="java.lang.String"/>
+	<field name="atleta_estado" class="java.lang.String"/>
+	<field name="atleta_cpf" class="java.lang.Integer"/>
+	<field name="atleta_rg" class="java.lang.String"/>
+	<field name="atleta_sexo" class="java.lang.String"/>
+	<field name="atleta_telefone" class="java.lang.Integer"/>
+	<field name="atleta_celular" class="java.lang.Integer"/>
+	<field name="atleta_portDeficiencia" class="java.lang.Integer"/>
+	<field name="atleta_contEmergencia" class="java.lang.Integer"/>
+	<field name="atleta_login" class="java.lang.String"/>
+	<field name="atleta_senha" class="java.lang.String"/>
+	<field name="atleta_email" class="java.lang.String"/>
+	<field name="atleta_cep" class="java.lang.Integer"/>
+	<field name="atleta_tipoSanguineo" class="java.lang.String"/>
+	<field name="atleta_Inscricao_idInscricao" class="java.lang.Integer"/>
+	<field name="inscricao_idInscricao" class="java.lang.Integer"/>
+	<field name="inscricao_boleto" class="java.lang.Integer"/>
+	<field name="inscricao_numeroDePeito" class="java.lang.String"/>
+	<field name="inscricao_Corrida_idCorrida" class="java.lang.Integer"/>
+	<field name="inscricao_Modalidade_idModalidade" class="java.lang.Integer"/>
+	<field name="inscricao_KitProva_idKitProva" class="java.lang.Integer"/>
+	<field name="inscricao_Lote_idLote" class="java.lang.Integer"/>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699" uuid="cbf4e701-3c3d-4864-a1bf-6009d0e1d267"/>
+				<staticText>
+					<reportElement x="20" y="20" width="375" height="43" forecolor="#FFFFFF" uuid="f799aa0d-4aac-47f8-9be1-84ba67873935"/>
+					<textElement>
+						<font size="34" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Atleta CodInscrição]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="355" y="72" width="220" height="20" forecolor="#FFFFFF" uuid="b9b91b4f-6ca3-481a-af88-fb2e27ff325b"/>
+					<textElement textAlignment="Right">
+						<font size="14" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Sistema Organizador de Corrida]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="13"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="21">
+			<line>
+				<reportElement x="-20" y="20" width="595" height="1" forecolor="#666666" uuid="1e151612-9a75-4016-8eb5-63b8b2d34c57"/>
+			</line>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="138" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="3511fa87-122f-4dc3-b03a-45d48d7cad8b"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NomeAtleta]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="138" y="0" width="138" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="8046a8a8-2ad2-4cff-9d3a-3614595d0129"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cpf]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="276" y="0" width="138" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="1156b620-678a-4d7c-b93d-d5b20306e63e"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sexo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="414" y="0" width="138" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="60976167-598e-4148-95a3-e742d02bde96"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CodInscrição]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="19" width="555" height="1" uuid="a8b1cd86-d20d-4e91-9f0b-1f2c77476c30"/>
+			</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="33" y="0" width="105" height="20" uuid="e21ad4fb-0649-4282-b931-43800eb64bf6"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{atleta_nomeAtleta}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="184" y="0" width="92" height="20" uuid="ac46e1f8-31a9-493f-9150-4318233eb727"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{atleta_cpf}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="317" y="0" width="97" height="20" uuid="00dc1f47-cc51-46d4-b18a-9b2845ba78eb"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{atleta_sexo}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="443" y="0" width="109" height="20" uuid="1361ac16-3e0b-4f97-a5fa-dd5142025de3"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{inscricao_idInscricao}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="23d14219-4595-4c09-bf4d-7b0c4bcdedfd"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="eebf1090-125c-489f-a9c0-ee7c197a4238"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="4" width="100" height="13" uuid="b41500dc-d72e-4f85-be0b-5ae4c8eb874c"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

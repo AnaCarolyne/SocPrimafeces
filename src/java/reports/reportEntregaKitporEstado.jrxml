@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reportEntregaKitporEstado" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c6079686-15d8-4c71-9a3f-8eb0bbd58323">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="EntregaKitporEstado" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     entregakit.`idEntregaKit` AS entregakit_idEntregaKit,
+     entregakit.`logradouro` AS entregakit_logradouro,
+     entregakit.`complemento` AS entregakit_complemento,
+     entregakit.`numero` AS entregakit_numero,
+     entregakit.`bairro` AS entregakit_bairro,
+     entregakit.`uf` AS entregakit_uf,
+     entregakit.`data` AS entregakit_data,
+     entregakit.`cep` AS entregakit_cep
+FROM
+     `entregakit` entregakit
+where $P{EntregaKitporEstado}=uf]]>
+	</queryString>
+	<field name="entregakit_idEntregaKit" class="java.lang.Integer"/>
+	<field name="entregakit_logradouro" class="java.lang.String"/>
+	<field name="entregakit_complemento" class="java.lang.String"/>
+	<field name="entregakit_numero" class="java.lang.Integer"/>
+	<field name="entregakit_bairro" class="java.lang.String"/>
+	<field name="entregakit_uf" class="java.lang.String"/>
+	<field name="entregakit_data" class="java.lang.String"/>
+	<field name="entregakit_cep" class="java.lang.Integer"/>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699" uuid="85fcf42e-c81a-4c36-a5b8-48f556e3cdd4"/>
+				<staticText>
+					<reportElement x="20" y="20" width="393" height="43" forecolor="#FFFFFF" uuid="e31817ad-1eee-43b5-9840-8444d445f5be"/>
+					<textElement>
+						<font size="34" isBold="true"/>
+					</textElement>
+					<text><![CDATA[EntregaKit Por Estado]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="349" y="72" width="226" height="20" forecolor="#FFFFFF" uuid="b0d67304-8a7a-4dc2-a330-2bc3551d5d7e"/>
+					<textElement textAlignment="Right">
+						<font size="14" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Sistema Organizador de Corrida]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="13"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="21">
+			<line>
+				<reportElement x="-20" y="20" width="595" height="1" forecolor="#666666" uuid="683a0bb5-4189-4bbf-b137-936905a1d88f"/>
+			</line>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="138" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="ea686a88-da5a-44ee-9a70-5fcfe5153826"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Logradouro]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="138" y="0" width="138" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="e0ae5526-9b4d-4ae2-aa89-17489a6cdbea"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Complemento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="276" y="0" width="138" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="3d1a3db2-3247-4cbc-9d8b-242825fee80d"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Numero]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="414" y="0" width="138" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="3a96b54c-ac9c-4cd2-9fb5-ea14740b0998"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Uf]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="19" width="555" height="1" uuid="312b7b79-b1ee-4dc8-ba35-500e32cf5356"/>
+			</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="0" y="0" width="138" height="20" uuid="f60982ed-5765-4283-ae69-41713746f23a"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{entregakit_logradouro}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="181" y="0" width="95" height="20" uuid="1e5b361f-daed-4ca7-85af-588e7dc713b8"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{entregakit_complemento}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="329" y="0" width="85" height="20" uuid="fbc03e62-ccd1-4c61-9525-d1370b55653f"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{entregakit_numero}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="481" y="0" width="71" height="20" uuid="d3cd051a-9207-42af-8639-566a7e98ff0b"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{entregakit_uf}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="7b5dc8de-33d7-4a3b-98fe-ee371f46f110"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="81927952-6880-4f18-9339-79d418ec7177"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="4" width="100" height="13" uuid="5cb46395-6b3f-486e-b8af-470c3581edcf"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

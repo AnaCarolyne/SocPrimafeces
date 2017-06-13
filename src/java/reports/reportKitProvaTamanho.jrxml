@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reportKitProvaTamanho" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="558e9c59-629b-47df-878c-6e7b1687d9b2">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="tamanho" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     kitprova.`idKitProva` AS kitprova_idKitProva,
+     kitprova.`tamanho` AS kitprova_tamanho,
+     kitprova.`sexo` AS kitprova_sexo,
+     kitprova.`EntregaKit_idEntregaKit` AS kitprova_EntregaKit_idEntregaKit,
+     kitprova.`ObjetoKit_idObjetoKit` AS kitprova_ObjetoKit_idObjetoKit,
+     kitprova.`Chip_idChip` AS kitprova_Chip_idChip
+FROM
+     `kitprova` kitprova
+where $P{tamanho}=tamanho]]>
+	</queryString>
+	<field name="kitprova_idKitProva" class="java.lang.Integer"/>
+	<field name="kitprova_tamanho" class="java.lang.String"/>
+	<field name="kitprova_sexo" class="java.lang.String"/>
+	<field name="kitprova_EntregaKit_idEntregaKit" class="java.lang.Integer"/>
+	<field name="kitprova_ObjetoKit_idObjetoKit" class="java.lang.Integer"/>
+	<field name="kitprova_Chip_idChip" class="java.lang.Integer"/>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699" uuid="34edfe3a-2d3b-472b-8603-c5913c7eec3b"/>
+				<staticText>
+					<reportElement x="20" y="20" width="347" height="43" forecolor="#FFFFFF" uuid="af9f98c2-7f6d-4c56-bc85-16700f9a711a"/>
+					<textElement>
+						<font size="34" isBold="true"/>
+					</textElement>
+					<text><![CDATA[KitProva Tamanho]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="367" y="72" width="208" height="20" forecolor="#FFFFFF" uuid="36b078fd-0093-4295-a09c-c3bc01af64b1"/>
+					<textElement textAlignment="Right">
+						<font size="14" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Sistema Organizador de Corrida]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="13"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="25">
+			<line>
+				<reportElement x="-20" y="20" width="595" height="1" forecolor="#666666" uuid="1dc36607-afce-49f2-804f-b59203ba4051"/>
+			</line>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="185" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="0bae308a-a0e4-4e24-a0f9-aaae7a3f9972"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tamanho]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="185" y="0" width="185" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="6bb92d92-371b-4d64-b5fd-162d4aec219b"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sexo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="370" y="0" width="185" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="6398128d-7e84-4312-ad34-767d2de1e5ac"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cod KitProva]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="19" width="555" height="1" uuid="4c152dc2-cbac-4c6b-8589-e62f1588be47"/>
+			</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="41" y="0" width="144" height="20" uuid="75d05e2a-35a4-422a-88a9-06bc5023220b"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{kitprova_tamanho}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="221" y="0" width="149" height="20" uuid="dd964577-f99f-40dd-9a43-392bbb6a3b31"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{kitprova_sexo}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="387" y="0" width="168" height="20" uuid="35043b9d-215d-4e92-9ce7-d8a5a27dc985"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{kitprova_idKitProva}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="f18a512f-3e03-4487-9f7f-50ca2d8e7538"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="9d77b52d-f20f-415c-848a-46dc11fa3923"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="4" width="100" height="13" uuid="b245af82-cf3c-464d-8bf6-07b91059609a"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>
