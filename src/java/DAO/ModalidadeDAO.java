@@ -5,13 +5,6 @@
  */
 package DAO;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.sql.Types;
-import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -24,17 +17,18 @@ import modelo.Modalidade;
  *
  * @author Juliana
  */
-public class ModalidadeDAO {
+public class ModalidadeDAO implements CrudDAO<Modalidade>{
     private static ModalidadeDAO instancia = new ModalidadeDAO();
 
     public static ModalidadeDAO obterInstancia() {
         return instancia;
     }
 
-    private ModalidadeDAO() {
+    public ModalidadeDAO() {
     }
 
-    public List<Modalidade> obterModalidades() {
+    @Override
+    public List<Modalidade> buscar() {
 
         EntityManager em = PersistenceUtil.getEntityManager();
         EntityTransaction tx = em.getTransaction();
@@ -55,7 +49,7 @@ public class ModalidadeDAO {
         return modalidades;
 
     }
-     public Modalidade obterModalidade(int idModalidade) {
+     public Modalidade getModalidade(int idModalidade) {
 
         EntityManager em = PersistenceUtil.getEntityManager();
         EntityTransaction tx = em.getTransaction();
@@ -75,7 +69,8 @@ public class ModalidadeDAO {
         return modalidade;
     }
 
-    public void gravar(Modalidade modalidade) {
+    @Override
+    public void salvar(Modalidade modalidade) {
 
         EntityManager em = PersistenceUtil.getEntityManager();
         EntityTransaction tx = em.getTransaction();
@@ -93,23 +88,7 @@ public class ModalidadeDAO {
         }
     }
 
-    public void alterar(Modalidade modalidade) {
 
-        EntityManager em = PersistenceUtil.getEntityManager();
-        EntityTransaction tx = em.getTransaction();
-        try {
-            tx.begin();
-            em.merge(modalidade);
-            tx.commit();
-        } catch (Exception e) {
-            if (tx != null && tx.isActive()) {
-                tx.rollback();
-            }
-            throw new RuntimeException(e);
-        } finally {
-            PersistenceUtil.close(em);
-        }
-    }
 
     public void excluir(Modalidade modalidade) {
 

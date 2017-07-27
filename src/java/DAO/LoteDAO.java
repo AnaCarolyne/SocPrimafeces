@@ -5,13 +5,6 @@
  */
 package DAO;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.sql.Types;
-import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -23,17 +16,18 @@ import modelo.Lote;
  *
  * @author Juliana
  */
-public class LoteDAO {
+public class LoteDAO implements CrudDAO<Lote>{
       private static LoteDAO instancia = new LoteDAO();
 
     public static LoteDAO obterInstancia() {
         return instancia;
     }
 
-    private LoteDAO() {
+    public LoteDAO() {
     }
 
-    public List<Lote> obterLotes() {
+      @Override
+    public List<Lote>buscar() {
 
         EntityManager em = PersistenceUtil.getEntityManager();
         EntityTransaction tx = em.getTransaction();
@@ -55,7 +49,7 @@ public class LoteDAO {
 
     }
 
-    public Lote obterLote(int idLote) {
+    public Lote getLote(int idLote) {
 
         EntityManager em = PersistenceUtil.getEntityManager();
         EntityTransaction tx = em.getTransaction();
@@ -75,7 +69,8 @@ public class LoteDAO {
         return lote;
     }
 
-    public void gravar(Lote lote) {
+      @Override
+    public void salvar(Lote lote) {
 
         EntityManager em = PersistenceUtil.getEntityManager();
         EntityTransaction tx = em.getTransaction();
@@ -93,24 +88,9 @@ public class LoteDAO {
         }
     }
 
-    public void alterar(Lote lote) {
+   
 
-        EntityManager em = PersistenceUtil.getEntityManager();
-        EntityTransaction tx = em.getTransaction();
-        try {
-            tx.begin();
-            em.merge(lote);
-            tx.commit();
-        } catch (Exception e) {
-            if (tx != null && tx.isActive()) {
-                tx.rollback();
-            }
-            throw new RuntimeException(e);
-        } finally {
-            PersistenceUtil.close(em);
-        }
-    }
-
+      @Override
     public void excluir(Lote lote) {
 
         EntityManager em = PersistenceUtil.getEntityManager();

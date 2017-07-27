@@ -6,17 +6,7 @@
 package DAO;
 
 import modelo.Suprimento;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.List;
-import java.sql.Connection;
-import java.sql.Driver;
-import java.sql.DriverManager;
-import java.sql.SQLException;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
@@ -25,7 +15,7 @@ import javax.persistence.TypedQuery;
  *
  * @author Juliana
  */
-public class SuprimentoDAO {
+public class SuprimentoDAO implements CrudDAO<Suprimento>{
 
     private static final SuprimentoDAO instancia = new SuprimentoDAO();
 
@@ -36,7 +26,8 @@ public class SuprimentoDAO {
     public SuprimentoDAO() {
     }
 
-    public static List<Suprimento> obterSuprimentos() {
+    @Override
+    public  List<Suprimento> buscar() {
 
         EntityManager em = PersistenceUtil.getEntityManager();
         EntityTransaction tx = em.getTransaction();
@@ -58,7 +49,7 @@ public class SuprimentoDAO {
 
     }
 
-    public static Suprimento obterSuprimento(int idSuprimento) {
+    public static Suprimento getSuprimento(int idSuprimento) {
 
         EntityManager em = PersistenceUtil.getEntityManager();
         EntityTransaction tx = em.getTransaction();
@@ -78,7 +69,7 @@ public class SuprimentoDAO {
         return suprimento;
     }
 
-    public static void gravar(Suprimento suprimento) {
+    public  void salvar(Suprimento suprimento) {
 
         EntityManager em = PersistenceUtil.getEntityManager();
         EntityTransaction tx = em.getTransaction();
@@ -96,25 +87,10 @@ public class SuprimentoDAO {
         }
     }
 
-    public static void alterar(Suprimento suprimento) {
+    
 
-        EntityManager em = PersistenceUtil.getEntityManager();
-        EntityTransaction tx = em.getTransaction();
-        try {
-            tx.begin();
-            em.merge(suprimento);
-            tx.commit();
-        } catch (Exception e) {
-            if (tx != null && tx.isActive()) {
-                tx.rollback();
-            }
-            throw new RuntimeException(e);
-        } finally {
-            PersistenceUtil.close(em);
-        }
-    }
-
-    public static void excluir(Suprimento suprimento) {
+    @Override
+    public  void excluir(Suprimento suprimento) {
 
         EntityManager em = PersistenceUtil.getEntityManager();
         EntityTransaction tx = em.getTransaction();

@@ -6,13 +6,6 @@
 package DAO;
 
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.sql.Types;
-import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -23,7 +16,7 @@ import modelo.Objetokit;
  *
  * @author Juliana
  */
-public class ObjetoKitDAO {
+public class ObjetoKitDAO implements CrudDAO<Objetokit>{
     
     private static ObjetoKitDAO instancia = new ObjetoKitDAO();
 
@@ -31,10 +24,11 @@ public class ObjetoKitDAO {
         return instancia;
     }
 
-    private ObjetoKitDAO() {
+    public ObjetoKitDAO() {
     }
 
-    public List<Objetokit> obterObjetokits() {
+    @Override
+    public List<Objetokit> buscar() {
 
         EntityManager em = PersistenceUtil.getEntityManager();
         EntityTransaction tx = em.getTransaction();
@@ -56,7 +50,7 @@ public class ObjetoKitDAO {
 
     }
 
-    public Objetokit obterObjetokit(int idObjetokit) {
+    public Objetokit getObjetokit(int idObjetokit) {
 
         EntityManager em = PersistenceUtil.getEntityManager();
         EntityTransaction tx = em.getTransaction();
@@ -76,7 +70,8 @@ public class ObjetoKitDAO {
         return objetokit;
     }
 
-    public void gravar(Objetokit objetokit) {
+    @Override
+    public void salvar(Objetokit objetokit) {
 
         EntityManager em = PersistenceUtil.getEntityManager();
         EntityTransaction tx = em.getTransaction();
@@ -94,24 +89,9 @@ public class ObjetoKitDAO {
         }
     }
 
-    public void alterar(Objetokit objetokit) {
+  
 
-        EntityManager em = PersistenceUtil.getEntityManager();
-        EntityTransaction tx = em.getTransaction();
-        try {
-            tx.begin();
-            em.merge(objetokit);
-            tx.commit();
-        } catch (Exception e) {
-            if (tx != null && tx.isActive()) {
-                tx.rollback();
-            }
-            throw new RuntimeException(e);
-        } finally {
-            PersistenceUtil.close(em);
-        }
-    }
-
+    @Override
     public void excluir(Objetokit objetokit) {
 
         EntityManager em = PersistenceUtil.getEntityManager();

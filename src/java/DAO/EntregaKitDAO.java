@@ -6,13 +6,6 @@
 package DAO;
 
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.sql.Types;
-import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -23,7 +16,7 @@ import modelo.Entregakit;
  *
  * @author Juliana
  */
-public class EntregaKitDAO {
+public class EntregaKitDAO implements CrudDAO<Entregakit> {
    
        private static EntregaKitDAO instancia = new EntregaKitDAO();
 
@@ -31,10 +24,11 @@ public class EntregaKitDAO {
         return instancia;
     }
 
-    private EntregaKitDAO() {
+    public EntregaKitDAO() {
     }
 
-    public List<Entregakit> obterEntregaKits() {
+       @Override
+    public List<Entregakit> buscar() {
 
         EntityManager em = PersistenceUtil.getEntityManager();
         EntityTransaction tx = em.getTransaction();
@@ -56,7 +50,7 @@ public class EntregaKitDAO {
 
     }
     
-    public Entregakit obterEntregaKit(int idEntregaKit) {
+    public Entregakit getEntregaKit(int idEntregaKit) {
 
         EntityManager em = PersistenceUtil.getEntityManager();
         EntityTransaction tx = em.getTransaction();
@@ -76,7 +70,8 @@ public class EntregaKitDAO {
         return entregaKit;
     }
 
-    public void gravar(Entregakit entregaKit) {
+       @Override
+    public void salvar(Entregakit entregaKit) {
 
         EntityManager em = PersistenceUtil.getEntityManager();
         EntityTransaction tx = em.getTransaction();
@@ -94,24 +89,9 @@ public class EntregaKitDAO {
         }
     }
 
-    public void alterar(Entregakit entregaKit) {
+    
 
-        EntityManager em = PersistenceUtil.getEntityManager();
-        EntityTransaction tx = em.getTransaction();
-        try {
-            tx.begin();
-            em.merge(entregaKit);
-            tx.commit();
-        } catch (Exception e) {
-            if (tx != null && tx.isActive()) {
-                tx.rollback();
-            }
-            throw new RuntimeException(e);
-        } finally {
-            PersistenceUtil.close(em);
-        }
-    }
-
+       @Override
     public void excluir(Entregakit entregaKit) {
 
         EntityManager em = PersistenceUtil.getEntityManager();

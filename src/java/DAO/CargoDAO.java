@@ -5,13 +5,6 @@
  */
 package DAO;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.sql.Types;
-import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -22,7 +15,7 @@ import modelo.Cargo;
  *
  * @author Juliana
  */
-public class CargoDAO {
+public class CargoDAO implements CrudDAO<Cargo>{
 
     private static final CargoDAO instancia = new CargoDAO();
 
@@ -30,10 +23,11 @@ public class CargoDAO {
         return instancia;
     }
 
-    private CargoDAO() {
+    public CargoDAO() {
     }
 
-    public List<Cargo> obterCargos() {
+    @Override
+    public List<Cargo> buscar() {
 
         EntityManager em = PersistenceUtil.getEntityManager();
         EntityTransaction tx = em.getTransaction();
@@ -55,7 +49,7 @@ public class CargoDAO {
 
     }
 
-    public Cargo obterCargo(int idCargo) {
+    public Cargo getCargo(int idCargo) {
 
         EntityManager em = PersistenceUtil.getEntityManager();
         EntityTransaction tx = em.getTransaction();
@@ -75,7 +69,8 @@ public class CargoDAO {
         return cargo;
     }
 
-    public void gravar(Cargo cargo) {
+    @Override
+    public void salvar(Cargo cargo) {
 
         EntityManager em = PersistenceUtil.getEntityManager();
         EntityTransaction tx = em.getTransaction();
@@ -93,24 +88,8 @@ public class CargoDAO {
         }
     }
 
-    public void alterar(Cargo cargo) {
 
-        EntityManager em = PersistenceUtil.getEntityManager();
-        EntityTransaction tx = em.getTransaction();
-        try {
-            tx.begin();
-            em.merge(cargo);
-            tx.commit();
-        } catch (Exception e) {
-            if (tx != null && tx.isActive()) {
-                tx.rollback();
-            }
-            throw new RuntimeException(e);
-        } finally {
-            PersistenceUtil.close(em);
-        }
-    }
-
+    @Override
     public void excluir(Cargo cargo) {
 
         EntityManager em = PersistenceUtil.getEntityManager();

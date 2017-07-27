@@ -6,13 +6,6 @@
 package DAO;
 
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.sql.Types;
-import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -24,7 +17,7 @@ import modelo.Atleta;
  * @author Juliana
  */
 
-public class AtletaDAO {
+public class AtletaDAO implements CrudDAO<Atleta>{
 
     private static AtletaDAO instancia = new AtletaDAO();
 
@@ -32,10 +25,10 @@ public class AtletaDAO {
         return instancia;
     }
 
-    private AtletaDAO() {
+    public AtletaDAO() {
     }
     
-      public List<Atleta> obterAtletas() {
+      public List<Atleta> buscar() {
 
         EntityManager em = PersistenceUtil.getEntityManager();
         EntityTransaction tx = em.getTransaction();
@@ -77,7 +70,7 @@ public class AtletaDAO {
         }
         return atleta;
     }
-      public void gravar(Atleta atleta) {
+      public void salvar(Atleta atleta) {
 
         EntityManager em = PersistenceUtil.getEntityManager();
         EntityTransaction tx = em.getTransaction();

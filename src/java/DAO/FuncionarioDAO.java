@@ -6,13 +6,6 @@
 package DAO;
 
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.sql.Types;
-import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -24,17 +17,18 @@ import modelo.Funcionarios;
  *
  * @author Juliana
  */
-public class FuncionarioDAO {
+public class FuncionarioDAO implements CrudDAO<Funcionarios>{
       private static FuncionarioDAO instancia = new FuncionarioDAO();
 
     public static FuncionarioDAO obterInstancia() {
         return instancia;
     }
 
-    private FuncionarioDAO() {
+    public FuncionarioDAO() {
     }
 
-public List<Funcionarios> obterFuncionarios() {
+      @Override
+      public List<Funcionarios> buscar() {
 
         EntityManager em = PersistenceUtil.getEntityManager();
         EntityTransaction tx = em.getTransaction();
@@ -55,7 +49,7 @@ public List<Funcionarios> obterFuncionarios() {
         return funcionarios;
 
     }
-public Funcionarios obterFuncionario(int idFuncionarios) {
+public Funcionarios getFuncionario(int idFuncionarios) {
 
         EntityManager em = PersistenceUtil.getEntityManager();
         EntityTransaction tx = em.getTransaction();
@@ -74,7 +68,8 @@ public Funcionarios obterFuncionario(int idFuncionarios) {
         }
         return funcionario;
     }
-public void gravar(Funcionarios funcionario) {
+      @Override
+      public void salvar(Funcionarios funcionario) {
 
         EntityManager em = PersistenceUtil.getEntityManager();
         EntityTransaction tx = em.getTransaction();
@@ -91,24 +86,8 @@ public void gravar(Funcionarios funcionario) {
             PersistenceUtil.close(em);
         }
     }
- public void alterar(Funcionarios funcionario) {
-
-        EntityManager em = PersistenceUtil.getEntityManager();
-        EntityTransaction tx = em.getTransaction();
-        try {
-            tx.begin();
-            em.merge(funcionario);
-            tx.commit();
-        } catch (Exception e) {
-            if (tx != null && tx.isActive()) {
-                tx.rollback();
-            }
-            throw new RuntimeException(e);
-        } finally {
-            PersistenceUtil.close(em);
-        }
-    }
-
+ 
+      @Override
     public void excluir(Funcionarios funcionario) {
 
         EntityManager em = PersistenceUtil.getEntityManager();

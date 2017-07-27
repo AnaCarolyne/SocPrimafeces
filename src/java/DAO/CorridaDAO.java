@@ -4,13 +4,6 @@
  * and open the template in the editor.
  */
 package DAO;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.sql.Types;
-import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -22,16 +15,17 @@ import modelo.Corrida;
  *
  * @author Juliana
  */
-public class CorridaDAO {
+public class CorridaDAO implements CrudDAO<Corrida> {
 private static CorridaDAO instancia = new CorridaDAO();
 
     public static CorridaDAO obterInstancia() {
         return instancia;
     }
 
-    private CorridaDAO() {
+    public CorridaDAO() {
     }
-   public List<Corrida> obterCorridas() {
+@Override
+   public List<Corrida> buscar() {
 
         EntityManager em = PersistenceUtil.getEntityManager();
         EntityTransaction tx = em.getTransaction();
@@ -52,7 +46,7 @@ private static CorridaDAO instancia = new CorridaDAO();
         return corridas;
 
     }
-   public Corrida obterCorrida(int idCorrida) {
+   public Corrida getCorrida(int idCorrida) {
 
         EntityManager em = PersistenceUtil.getEntityManager();
         EntityTransaction tx = em.getTransaction();
@@ -71,7 +65,8 @@ private static CorridaDAO instancia = new CorridaDAO();
         }
         return corrida;
     }
-   public void gravar(Corrida corrida) {
+@Override
+   public void salvar(Corrida corrida) {
 
         EntityManager em = PersistenceUtil.getEntityManager();
         EntityTransaction tx = em.getTransaction();
@@ -88,24 +83,9 @@ private static CorridaDAO instancia = new CorridaDAO();
             PersistenceUtil.close(em);
         }
     }
-public void alterar(Corrida corrida) {
 
-        EntityManager em = PersistenceUtil.getEntityManager();
-        EntityTransaction tx = em.getTransaction();
-        try {
-            tx.begin();
-            em.merge(corrida);
-            tx.commit();
-        } catch (Exception e) {
-            if (tx != null && tx.isActive()) {
-                tx.rollback();
-            }
-            throw new RuntimeException(e);
-        } finally {
-            PersistenceUtil.close(em);
-        }
-    }
 
+@Override
     public void excluir(Corrida corrida) {
 
         EntityManager em = PersistenceUtil.getEntityManager();

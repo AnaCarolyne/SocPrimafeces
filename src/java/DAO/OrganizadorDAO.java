@@ -6,7 +6,7 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 import modelo.Organizador;
 
-public class OrganizadorDAO {
+public class OrganizadorDAO implements CrudDAO<Organizador>{
 
     private static final OrganizadorDAO instancia = new OrganizadorDAO();
 
@@ -14,10 +14,11 @@ public class OrganizadorDAO {
         return instancia;
     }
 
-    private OrganizadorDAO() {
+    public OrganizadorDAO() {
     }
 
-    public List<Organizador> obterOrganizadores() {
+    @Override
+    public List<Organizador> buscar() {
 
         EntityManager em = PersistenceUtil.getEntityManager();
         EntityTransaction tx = em.getTransaction();
@@ -39,7 +40,7 @@ public class OrganizadorDAO {
 
     }
 
-    public Organizador obterOrganizador(int idOrganizador) {
+    public Organizador getOrganizador(int idOrganizador) {
 
         EntityManager em = PersistenceUtil.getEntityManager();
         EntityTransaction tx = em.getTransaction();
@@ -59,7 +60,8 @@ public class OrganizadorDAO {
         return organizador;
     }
 
-    public void gravar(Organizador organizador) {
+    @Override
+    public void salvar(Organizador organizador) {
 
         EntityManager em = PersistenceUtil.getEntityManager();
         EntityTransaction tx = em.getTransaction();
@@ -77,24 +79,8 @@ public class OrganizadorDAO {
         }
     }
 
-    public void alterar(Organizador organizador) {
 
-        EntityManager em = PersistenceUtil.getEntityManager();
-        EntityTransaction tx = em.getTransaction();
-        try {
-            tx.begin();
-            em.merge(organizador);
-            tx.commit();
-        } catch (Exception e) {
-            if (tx != null && tx.isActive()) {
-                tx.rollback();
-            }
-            throw new RuntimeException(e);
-        } finally {
-            PersistenceUtil.close(em);
-        }
-    }
-
+    @Override
     public void excluir(Organizador organizador) {
 
         EntityManager em = PersistenceUtil.getEntityManager();

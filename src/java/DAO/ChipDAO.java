@@ -5,13 +5,6 @@
  */
 package DAO;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.sql.Types;
-import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -22,7 +15,7 @@ import modelo.Chip;
  *
  * @author Juliana
  */
-public class ChipDAO {
+public class ChipDAO implements CrudDAO<Chip>{
 
     private static ChipDAO instancia = new ChipDAO();
 
@@ -30,11 +23,12 @@ public class ChipDAO {
         return instancia;
     }
 
-    private ChipDAO() {
+    public ChipDAO() {
     }
 
     
-    public List<Chip> obterChips() {
+    @Override
+    public List<Chip> buscar() {
 
         EntityManager em = PersistenceUtil.getEntityManager();
         EntityTransaction tx = em.getTransaction();
@@ -56,7 +50,7 @@ public class ChipDAO {
 
     }
     
-public Chip obterChip(int idChip) {
+public Chip getChip(int idChip) {
 
         EntityManager em = PersistenceUtil.getEntityManager();
         EntityTransaction tx = em.getTransaction();
@@ -75,7 +69,8 @@ public Chip obterChip(int idChip) {
         }
         return chip;
     }
-    public void gravar(Chip chip) {
+    @Override
+    public void salvar(Chip chip) {
 
         EntityManager em = PersistenceUtil.getEntityManager();
         EntityTransaction tx = em.getTransaction();
@@ -92,23 +87,8 @@ public Chip obterChip(int idChip) {
             PersistenceUtil.close(em);
         }
     }
-    public void alterar(Chip chip) {
-
-        EntityManager em = PersistenceUtil.getEntityManager();
-        EntityTransaction tx = em.getTransaction();
-        try {
-            tx.begin();
-            em.merge(chip);
-            tx.commit();
-        } catch (Exception e) {
-            if (tx != null && tx.isActive()) {
-                tx.rollback();
-            }
-            throw new RuntimeException(e);
-        } finally {
-            PersistenceUtil.close(em);
-        }
-    }
+   
+    @Override
     public void excluir(Chip chip) {
 
         EntityManager em = PersistenceUtil.getEntityManager();
